@@ -26,6 +26,8 @@ final class ImageTableViewContainer: UIView {
         self.addSubview(self.tableView)
         
         self.tableView.register(ImageTableCell.self, forCellReuseIdentifier: ImageTableCell.reuseIdentifier)
+        self.tableView.keyboardDismissMode = .onDrag
+        
         self.tableView.backgroundColor = .clear
         self.tableView.rowHeight = 280
         
