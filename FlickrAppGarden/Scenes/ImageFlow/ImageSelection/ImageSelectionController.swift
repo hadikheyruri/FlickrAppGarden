@@ -49,7 +49,7 @@ final class ImageSelectionController: BaseViewController, UISearchBarDelegate, U
     }
     
     private func loadData(for tags: String, completion: @escaping () -> Swift.Void = {}) {
-                
+        
         let fetchData: FetchData = FetchData.shared
         var handler: NetworkHandler?
         handler = NetworkHandler()
@@ -95,6 +95,7 @@ final class ImageSelectionController: BaseViewController, UISearchBarDelegate, U
         
         self.searchBar.searchBarStyle = UISearchBar.Style.prominent
         self.searchBar.searchTextField.textColor = .lightGray
+        self.searchBar.searchTextField.autocapitalizationType = .none
         self.searchBar.placeholder = " Search..."
         self.searchBar.sizeToFit()
         self.searchBar.isTranslucent = false
@@ -108,7 +109,8 @@ final class ImageSelectionController: BaseViewController, UISearchBarDelegate, U
         
         self.resetData()
         
-        self.loadData(for: searchBar.text ?? "lazy") {
+        let searchTags: String = searchBar.text?.replacingOccurrences(of: " ", with: ",") ?? "lazy"
+        self.loadData(for: searchTags) {
             self.container.tableView.reloadData()
         }
         
