@@ -19,12 +19,10 @@ class Validator {
         guard let tags = tags else { return defaults.searchTag }
 
         let trimmed: String = tags.trimmingCharacters(in: .whitespaces)
-        if trimmed.isEmpty || trimmed.range(of: "^[a-zA-Z0-9]+$", options: .regularExpression) != nil {
-            
-            return defaults.searchTag
-        }
+        guard !trimmed.isEmpty else { return defaults.searchTag }
+        
         let searchTags: String = trimmed.replacingOccurrences(of: " ", with: ",")
-
+        
         return searchTags
     }
 }
