@@ -40,19 +40,12 @@ final class ImageSelectionController: BaseViewController, UISearchBarDelegate, P
         self.setupTableView()
         self.setupSearchBar()
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.didTapView(sender:)))
-        self.view.addGestureRecognizer(tapGesture)
-        
-        self.loadData(for: defaults.searchTag) {
+        self.loadData(for: self.searchBar.text) {
             self.container.tableView.reloadData()
         }
     }
     
-    @objc func didTapView(sender: UITapGestureRecognizer) {
-        self.searchBar.resignFirstResponder()
-    }
-    
-    private func loadData(for tags: String, completion: @escaping () -> Swift.Void = {}) {
+    private func loadData(for tags: String?, completion: @escaping () -> Swift.Void = {}) {
         
         let fetchData: FetchData = FetchData.shared
         var handler: NetworkHandler?
@@ -112,9 +105,7 @@ final class ImageSelectionController: BaseViewController, UISearchBarDelegate, P
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         self.resetData()
-        
-        let searchTags: String = searchBar.text?.replacingOccurrences(of: " ", with: ",") ?? defaults.searchTag
-        self.loadData(for: searchTags) {
+        self.loadData(for: self.searchBar.text) {
             self.container.tableView.reloadData()
         }
         
@@ -126,9 +117,7 @@ final class ImageSelectionController: BaseViewController, UISearchBarDelegate, P
     func pullToRefreshDataSource() {
         
         self.resetData()
-        let searchTags: String = searchBar.text?.replacingOccurrences(of: " ", with: ",") ?? defaults.searchTag
-        
-        self.loadData(for: searchTags) {
+        self.loadData(for: self.searchBar.text) {
             self.container.tableView.reloadData()
         }
     }
@@ -148,8 +137,4 @@ final class ImageSelectionController: BaseViewController, UISearchBarDelegate, P
         self.container.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         self.container.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
     }
-}
-
-fileprivate enum defaults {
-    static public let searchTag: String = "lazy"
 }

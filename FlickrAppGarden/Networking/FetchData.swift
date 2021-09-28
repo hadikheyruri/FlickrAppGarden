@@ -12,10 +12,11 @@ final class FetchData {
     static let shared = FetchData()
     private init() { }
         
-    func fetchImageData(for tags: String, handler: NetworkHandler?, imageLoader: ImageLoader?, completion: @escaping (Result<[Image], Error>) -> Swift.Void) {
+    func fetchImageData(for tags: String?, handler: NetworkHandler?, imageLoader: ImageLoader?, completion: @escaping (Result<[Image], Error>) -> Swift.Void) {
 
+        let validatedTags: String = Validator.validateSearch(tags)
         
-        handler?.queryImages(for: tags, completion: { (res) in
+        handler?.queryImages(for: validatedTags, completion: { (res) in
             
             switch res {
             case .success(let results):

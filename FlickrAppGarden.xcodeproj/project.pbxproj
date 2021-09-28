@@ -39,6 +39,7 @@
 		0409B23A2702AA0A001CFEEA /* UIImageExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409B2392702AA0A001CFEEA /* UIImageExt.swift */; };
 		0409B23C2702AA31001CFEEA /* UIImageViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409B23B2702AA31001CFEEA /* UIImageViewExt.swift */; };
 		0409B24027039965001CFEEA /* PullableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409B23F27039965001CFEEA /* PullableTableView.swift */; };
+		04B09DEF2703AAB90039E7C4 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B09DEE2703AAB90039E7C4 /* Validator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		0409B2392702AA0A001CFEEA /* UIImageExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExt.swift; sourceTree = "<group>"; };
 		0409B23B2702AA31001CFEEA /* UIImageViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExt.swift; sourceTree = "<group>"; };
 		0409B23F27039965001CFEEA /* PullableTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullableTableView.swift; sourceTree = "<group>"; };
+		04B09DEE2703AAB90039E7C4 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				0409B21E27029CD6001CFEEA /* NetworkHandler.swift */,
 				0409B22227029FE4001CFEEA /* ImageLoader.swift */,
 				0409B22D2702A33E001CFEEA /* FetchData.swift */,
+				04B09DEE2703AAB90039E7C4 /* Validator.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				0409B2292702A227001CFEEA /* CellImageViewModel.swift in Sources */,
 				0409B22E2702A33E001CFEEA /* FetchData.swift in Sources */,
 				0409B21F27029CD6001CFEEA /* NetworkHandler.swift in Sources */,
+				04B09DEF2703AAB90039E7C4 /* Validator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
