@@ -83,6 +83,7 @@ final class ImageSelectionController: BaseViewController, UISearchBarDelegate, U
     
     private func resetData() {
         self.imgViewModels.removeAll()
+        self.images.removeAll()
         self.imagesDataSource = ImagesDataSource(imageViewModels: self.imgViewModels)
         self.container.tableView.reloadData()
     }
