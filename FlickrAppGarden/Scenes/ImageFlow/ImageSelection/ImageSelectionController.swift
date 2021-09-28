@@ -57,23 +57,23 @@ final class ImageSelectionController: BaseViewController, UISearchBarDelegate, U
         var loader: ImageLoader?
         loader = ImageLoader()
         
-        fetchData.fetchImageData(for: tags, handler: handler, imageLoader: loader) { [unowned self] response in
+        fetchData.fetchImageData(for: tags, handler: handler, imageLoader: loader) { [weak self] response in
             
             if case .success(let responseImages) = response {
-                self.images.append(contentsOf: responseImages)
+                self?.images.append(contentsOf: responseImages)
                 
                 let viewModels: [CellImageViewModel] = responseImages.map { CellImageViewModel(image: $0, loader: loader) }
-                self.imgViewModels.append(contentsOf: viewModels)
+                self?.imgViewModels.append(contentsOf: viewModels)
                 
-                self.imagesDataSource = ImagesDataSource(imageViewModels: self.imgViewModels)
-                self.navigationItem.title = "Choose an image"
+                self?.imagesDataSource = ImagesDataSource(imageViewModels: self?.imgViewModels ?? [])
+                self?.navigationItem.title = "Choose an image"
                 completion()
             }
             
             if case .failure(let err) = response {
                 if err.localizedDescription == APIError.noConnection.localizedDescription {
                     let message: MessageController = MessageController()
-                    self.present(message.connectionFailController, animated: true)
+                    self?.present(message.connectionFailController, animated: true)
                 }
       
                 return

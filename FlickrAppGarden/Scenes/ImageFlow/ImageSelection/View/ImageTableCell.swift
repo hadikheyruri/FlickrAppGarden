@@ -27,9 +27,9 @@ final class ImageTableCell: UITableViewCell {
         didSet {
             
             self.wallImageView.image = self.placeholderImage
-            imageViewModel?.$image.sink { [unowned self] image in
+            imageViewModel?.$image.sink { [weak self] image in
                 if let im = image {
-                    self.wallImageView.image = im
+                    self?.wallImageView.image = im
                 }
             }.store(in: &cancellables)
         }

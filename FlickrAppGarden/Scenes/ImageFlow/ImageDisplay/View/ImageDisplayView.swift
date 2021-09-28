@@ -66,15 +66,15 @@ final class ImageDisplayView: UIView {
         self.activityIndicator.startAnimating()
         
         self.wallImageView.image = self.placeholderImage
-        imageViewModel.$image.sink { [unowned self] image in
+        imageViewModel.$image.sink { [weak self] image in
             if let im = image {
                 
                 guard let rotated = im.rotateRight else { return }
 
-                self.activityIndicator.stopAnimating()
-                self.activityIndicator.removeFromSuperview()
+                self?.activityIndicator.stopAnimating()
+                self?.activityIndicator.removeFromSuperview()
                 
-                self.wallImageView.image = rotated.blend(with: Color.black, alpha: 0.4)
+                self?.wallImageView.image = rotated.blend(with: Color.white, alpha: 0.2)
             }
         }.store(in: &cancellables)
         
