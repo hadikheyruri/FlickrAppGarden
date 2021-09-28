@@ -40,9 +40,16 @@ final class ImageSelectionController: BaseViewController, UISearchBarDelegate, P
         self.setupTableView()
         self.setupSearchBar()
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.didTapView(sender:)))
+        self.view.addGestureRecognizer(tapGesture)
+        
         self.loadData(for: defaults.searchTag) {
             self.container.tableView.reloadData()
         }
+    }
+    
+    @objc func didTapView(sender: UITapGestureRecognizer) {
+        self.searchBar.resignFirstResponder()
     }
     
     private func loadData(for tags: String, completion: @escaping () -> Swift.Void = {}) {
