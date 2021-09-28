@@ -38,6 +38,7 @@
 		0409B2382702A9BB001CFEEA /* Screen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409B2372702A9BB001CFEEA /* Screen.swift */; };
 		0409B23A2702AA0A001CFEEA /* UIImageExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409B2392702AA0A001CFEEA /* UIImageExt.swift */; };
 		0409B23C2702AA31001CFEEA /* UIImageViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409B23B2702AA31001CFEEA /* UIImageViewExt.swift */; };
+		0409B24027039965001CFEEA /* PullableTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0409B23F27039965001CFEEA /* PullableTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		0409B2372702A9BB001CFEEA /* Screen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screen.swift; sourceTree = "<group>"; };
 		0409B2392702AA0A001CFEEA /* UIImageExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExt.swift; sourceTree = "<group>"; };
 		0409B23B2702AA31001CFEEA /* UIImageViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExt.swift; sourceTree = "<group>"; };
+		0409B23F27039965001CFEEA /* PullableTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullableTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +235,7 @@
 			children = (
 				0409B20C270295ED001CFEEA /* BaseViewController.swift */,
 				0409B20E2702960D001CFEEA /* MessageController.swift */,
+				0409B23F27039965001CFEEA /* PullableTableView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				0409B20F2702960D001CFEEA /* MessageController.swift in Sources */,
 				0409B20A2702953F001CFEEA /* FlowCoordinator.swift in Sources */,
 				0409B1F527029097001CFEEA /* Color.swift in Sources */,
+				0409B24027039965001CFEEA /* PullableTableView.swift in Sources */,
 				0409B204270293DB001CFEEA /* ImageSelectionController.swift in Sources */,
 				0409B21927029C12001CFEEA /* HTTPResponse.swift in Sources */,
 				0409B2302702A443001CFEEA /* ImageTableViewContainer.swift in Sources */,

@@ -11,13 +11,11 @@ protocol ImageSelectionControllerDelegate: Coordinator {
     func didSelectImage(with image: Image?)
 }
 
-final class ImageSelectionController: BaseViewController, UISearchBarDelegate, UITableViewDelegate {
-    
+final class ImageSelectionController: BaseViewController, UISearchBarDelegate, PullableTableViewDelegate {
     
     // MARK: - Navigation Delegate
     
     public var delegate: ImageSelectionControllerDelegate?
-
     
     // MARK: - Properties
         
@@ -32,7 +30,6 @@ final class ImageSelectionController: BaseViewController, UISearchBarDelegate, U
             self.container.tableView.dataSource = imagesDataSource
         }
     }
-     
    
     // MARK: - View Life Cycle Methods
     
@@ -43,7 +40,7 @@ final class ImageSelectionController: BaseViewController, UISearchBarDelegate, U
         self.setupTableView()
         self.setupSearchBar()
         
-        self.loadData(for:"lazy") {
+        self.loadData(for: defaults.searchTag) {
             self.container.tableView.reloadData()
         }
     }
@@ -109,7 +106,7 @@ final class ImageSelectionController: BaseViewController, UISearchBarDelegate, U
         
         self.resetData()
         
-        let searchTags: String = searchBar.text?.replacingOccurrences(of: " ", with: ",") ?? "lazy"
+        let searchTags: String = searchBar.text?.replacingOccurrences(of: " ", with: ",") ?? defaults.searchTag
         self.loadData(for: searchTags) {
             self.container.tableView.reloadData()
         }
@@ -119,6 +116,16 @@ final class ImageSelectionController: BaseViewController, UISearchBarDelegate, U
 
     // MARK: - TableView Methods
 
+    func pullToRefreshDataSource() {
+        
+        self.resetData()
+        let searchTags: String = searchBar.text?.replacingOccurrences(of: " ", with: ",") ?? defaults.searchTag
+        
+        self.loadData(for: searchTags) {
+            self.container.tableView.reloadData()
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let image: Image = self.images[indexPath.row]
         self.delegate?.didSelectImage(with: image)
@@ -134,4 +141,8 @@ final class ImageSelectionController: BaseViewController, UISearchBarDelegate, U
         self.container.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
         self.container.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
     }
+}
+
+fileprivate enum defaults {
+    static public let searchTag: String = "lazy"
 }

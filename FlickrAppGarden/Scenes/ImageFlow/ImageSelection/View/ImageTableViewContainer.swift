@@ -9,7 +9,7 @@ import UIKit
 
 final class ImageTableViewContainer: UIView {
     
-    var tableView: UITableView = UITableView()
+    var tableView: PullableTableView = PullableTableView()
     
     init() {
         
