@@ -27,8 +27,12 @@ final class ImagesDataSource: NSObject, UITableViewDataSource {
       }
       
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ImageTableCell.reuseIdentifier) as! ImageTableCell
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ImageTableCell.reuseIdentifier) as? ImageTableCell else {
+            fatalError("Could not cast cell: ImageTableCell!")
+        }
         cell.imageViewModel = self.imageViewModel(at: indexPath)
+        
         return cell
     }
 }
