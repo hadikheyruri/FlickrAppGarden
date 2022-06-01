@@ -54,7 +54,7 @@ final class ImageSelectionController: BaseViewController, UISearchBarDelegate, P
         var loader: ImageLoader?
         loader = ImageLoader()
         
-        fetchData.fetchImageData(for: tags, handler: handler, imageLoader: loader) { [weak self] response in
+        fetchData.fetchImageData(for: tags, handler: handler) { [weak self] response in
             
             if case .success(let responseImages) = response {
                 self?.images.append(contentsOf: responseImages)
