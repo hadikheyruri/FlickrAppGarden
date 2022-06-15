@@ -15,6 +15,8 @@ final class FlowNavigationController: UINavigationController {
     // MARK: - Controller Lifecycle
 
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         self.configureNavigationBar()
     }
     
